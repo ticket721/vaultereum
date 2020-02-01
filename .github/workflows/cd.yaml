@@ -2,8 +2,8 @@ name: Vaultereum CD
 
 on:
   push:
-    tags:
-      - '*'
+    branched:
+      - master
 
 jobs:
     build:

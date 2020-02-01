@@ -2,8 +2,8 @@ name: Vaultereum UI CD
 
 on:
   push:
-    tags:
-      - '*'
+    branched:
+      - master
 
 jobs:
     build_ui:
