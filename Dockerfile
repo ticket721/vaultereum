@@ -40,8 +40,10 @@ RUN mkdir /vault          \
 
 COPY  --from=0  /go/bin/vault-ethereum  /vault/plugins
 COPY  --from=0  /go/bin/vault           /bin
-COPY            init.sh                 /vault/init.sh
-COPY            devconfig.hcl           /vault/config/devconfig.hcl
-
-RUN chmod +x /vault/init.sh
+COPY            init_dev.sh                 /vault/init_dev.sh
+COPY            entrypoint.sh                 /vault/entrypoint.sh
+COPY            devconfig.hcl                 /vault/config/devconfig.hcl
+RUN   chmod +x /vault/init_dev.sh
+RUN   chmod +x /vault/entrypoint.sh
+ENTRYPOINT ["/vault/entrypoint.sh"]
 
