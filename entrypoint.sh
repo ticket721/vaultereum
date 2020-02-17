@@ -2,7 +2,7 @@
 
 set -m
 vault $@ &
-sleep 5
+sleep 60
 
 if [ "$1" == "server" ]; then
   if [ "$2" == "-dev" ]; then
