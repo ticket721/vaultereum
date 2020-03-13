@@ -1,7 +1,7 @@
 #! /bin/bash
 
 VAULT_VERSION="v1.3.2"
-VAULT_ETHEREUM_VERSION="v0.2.11"
+VAULT_ETHEREUM_VERSION="fix/accept-hex-encoding-on-accounts-sign"
 GO_VERSION="1.12.7"
 
 docker build -t vaultereum-ui \

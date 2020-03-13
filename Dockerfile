@@ -9,6 +9,7 @@ ARG VAULT_ETHEREUM_VERSION
 ARG VAULT_UI
 ARG GO_VERSION
 
+ADD   ${VAULT_ETH_PATH} ${GOPATH}/github.com/immutability-io/vault-ethereum
 RUN  apt-get update
 RUN   apt-get install -y build-essential git wget curl
 RUN   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -23,9 +24,9 @@ RUN   cd vault \
 &&    mkdir -p pkg/web_ui \
 &&    make bootstrap    \
 &&    if [ "$VAULT_UI" = "true" ]; then make static-dist && make dev-ui; else make dev; fi
-RUN   mkdir -p ${GOPATH}/github.com/immutability-io    \
+RUN   mkdir -p ${GOPATH}/github.com/immutability-io
 RUN   cd ${GOPATH}/github.com/immutability-io    \
-&&    git clone --branch $VAULT_ETHEREUM_VERSION https://github.com/immutability-io/vault-ethereum.git    \
+&&    git clone --branch ${VAULT_ETHEREUM_VERSION} https://github.com/ticket721/vault-ethereum.git    \
 &&    cd vault-ethereum    \
 &&    go install
 RUN   cp ${GOPATH}/bin/vault-ethereum /vault/plugins/
